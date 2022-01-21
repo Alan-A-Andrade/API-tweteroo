@@ -10,6 +10,29 @@ const users = []
 
 const tweets = []
 
+function filterLastTweets(number) {
+
+  let tweetsList = []
+
+  for (let i = 0; i < number; i++) {
+
+    if (i > tweets.length - 1) {
+      return tweetsList
+    }
+    let userTweet = {
+      "username": tweets[tweets.length - 1 - i].username,
+      "avatar": users.find(e => e.username === tweets[tweets.length - 1 - i].username).avatar,
+      "tweet": tweets[tweets.length - 1 - i].tweet,
+
+    }
+
+    tweetsList.push(userTweet)
+
+  }
+
+  return tweetsList
+}
+
 app.get("/hello", (req, res) => {
   res.send(users);
 });
@@ -32,9 +55,8 @@ app.post("/tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
 
-  //let lastTenTweets
 
-  res.send(tweets);
+  res.send(filterLastTweets(10));
 });
 
 
