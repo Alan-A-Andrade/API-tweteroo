@@ -20,6 +20,7 @@ function filterLastTweets(number) {
       return tweetsList
     }
     let userTweet = {
+
       "username": tweets[tweets.length - 1 - i].username,
       "avatar": users.find(e => e.username === tweets[tweets.length - 1 - i].username).avatar,
       "tweet": tweets[tweets.length - 1 - i].tweet,
